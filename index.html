@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Fire Battlegrounds Tournament | Registration &amp; Entry</title>
+  <meta name="description" content="Register for the Free Fire Battle Royale tournament. Solo, duo and squad entry." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: #131313;
+      --bg-deep: #0e0e0e;
+      --bg-card: #1c1b1b;
+      --bg-panel: #201f1f;
+      --bg-input: #0e0e0e;
+      --text-main: #e5e2e1;
+      --text-muted: #e5bcc5;
+      --accent: #ff4a8d;
+      --accent-soft: #ffb1c4;
+      --accent-dark: #590028;
+      --cyan: #d3fbff;
+      --amber: #ffba20;
+      --error: #ff6b6b;
+      --success: #7fe0a0;
+      --font-display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+      --font-mono: 'Space Mono', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      margin: 0;
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      background: rgba(14, 14, 14, 0.92);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 1px 12px rgba(255, 74, 141, 0.15);
+    }
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-bar { width: 7px; height: 8px; background: var(--accent); box-shadow: 0 0 8px var(--accent); flex-shrink: 0; }
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      line-height: 1.05;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-tag {
+      background: var(--bg-panel);
+      color: var(--accent-soft);
+      font-size: 10px;
+      padding: 2px 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav { display: flex; gap: 8px; align-items: center; }
+    .nav a {
+      text-decoration: none;
+      padding: 6px 14px;
+      font-size: 12px;
+      letter-spacing: 0.96px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav a:hover, .nav a.active { background: var(--accent); color: var(--accent-dark); }
+    .slots-chip {
+      background: var(--bg-panel);
+      padding: 4px 8px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .slots-chip strong { display: block; color: var(--amber); font-size: 12px; letter-spacing: 0.96px; }
+    .menu-toggle {
+      display: none;
+      background: var(--accent-soft);
+      border: 0;
+      width: 36px; height: 32px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding-top: 64px;
+      background: linear-gradient(180deg, #0e0e0e 0%, #131313 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 75% 40%, rgba(255, 74, 141, 0.18), transparent 55%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      padding: 40px 32px 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .op-id {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 12px; letter-spacing: 1.2px; color: var(--accent-soft);
+      text-transform: uppercase;
+    }
+    .op-id::before { content: ''; width: 10px; height: 10px; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .hero h1 {
+      margin: 12px 0 0;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(36px, 6vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -1.4px;
+      text-transform: uppercase;
+      color: var(--text-main);
+      max-width: 820px;
+    }
+    .portal-status {
+      background: var(--bg-panel);
+      padding: 8px 14px;
+      display: flex; gap: 8px; align-items: center;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+    .portal-status strong { display: block; color: var(--text-main); font-size: 12px; letter-spacing: 0.96px; }
+
+    /* ---------- Mode switcher ---------- */
+    .mode-section { padding: 24px 0 0; }
+    .mode-bar {
+      background: var(--bg-card);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px;
+    }
+    .mode-label {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--text-muted); font-weight: 700; font-size: 12px; letter-spacing: 0.6px; text-transform: uppercase;
+      padding: 0 8px;
+    }
+    .mode-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+    .mode-tab {
+      background: var(--bg-panel);
+      border: 0;
+      color: var(--text-main);
+      padding: 8px 40px;
+      cursor: default;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      font-family: inherit;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+    .mode-tab .code { color: var(--accent); font-size: 10px; letter-spacing: 1px; }
+    .mode-tab .name { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: 1.2px; text-transform: uppercase; }
+    .mode-tab .desc { color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .mode-tab.active {
+      background: var(--accent);
+      color: var(--accent-dark);
+      box-shadow: 0 0 8px rgba(255, 74, 141, 0.4);
+    }
+    .mode-tab.active .code, .mode-tab.active .desc, .mode-tab.active .name { color: var(--accent-dark); }
+    .region {
+      background: var(--bg-deep);
+      padding: 8px 16px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .region strong { color: var(--cyan); font-size: 12px; letter-spacing: 0.96px; }
+
+    /* ---------- Registration grid ---------- */
+    .register { padding: 24px 0 48px; scroll-margin-top: 80px; }
+    .reg-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--bg-card);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    }
+    .panel-header {
+      background: var(--bg-deep);
+      padding: 4px 8px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .panel-header .title {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--accent); font-weight: 700; font-size: 12px; letter-spacing: 0.6px; text-transform: uppercase;
+    }
+    .panel-header .title::before { content: ''; width: 6px; height: 6px; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+    .panel-header .meta { color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+    .panel-header .meta.amber { color: var(--amber); }
+    .panel-header .meta.cyan { color: var(--cyan); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .field.full { grid-column: 1 / -1; }
+    .field label {
+      color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .field input {
+      background: var(--bg-input);
+      border: 1px solid transparent;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.96px;
+      padding: 9px 10px;
+      width: 100%;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field input::placeholder { color: rgba(229, 188, 197, 0.4); }
+    .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,74,141,0.2); }
+    .field input[aria-invalid="true"] { border-color: var(--error); }
+    .field-error { color: var(--error); font-size: 11px; min-height: 14px; letter-spacing: 0.5px; }
+    .phone-wrap { display: flex; align-items: stretch; }
+    .phone-prefix {
+      background: var(--bg-panel);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.96px;
+      padding: 9px 8px;
+      display: flex; align-items: center;
+    }
+    .phone-wrap input { flex: 1; min-width: 0; }
+
+    .scanner {
+      background: var(--bg-deep);
+      padding: 16px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .scanner-frame {
+      background: var(--bg-panel);
+      width: 100%; max-width: 384px; height: 192px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255, 74, 141, 0.15);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .corner { position: absolute; width: 16px; height: 16px; border: 2px solid var(--accent); }
+    .corner.tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+    .corner.tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
+    .corner.bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
+    .corner.br { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+    .scan-line {
+      position: absolute; left: 32px; right: 32px; top: 50%;
+      height: 2px; background: var(--accent); box-shadow: 0 0 12px var(--accent);
+    }
+    .scanner-caption {
+      position: absolute; top: 14px; left: 0; right: 0; text-align: center;
+      color: var(--cyan); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .scanner-hint {
+      position: absolute; bottom: 10px; left: 0; right: 0; text-align: center;
+      color: var(--text-muted); font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .scanner-note { color: var(--text-muted); font-size: 11px; text-align: center; max-width: 480px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; cursor: pointer; text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 22px;
+      padding: 14px 24px;
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s, background 0.2s;
+      white-space: normal;
+      text-align: center;
+    }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .btn:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-dark);
+      box-shadow: 0 0 12px rgba(255, 74, 141, 0.5);
+      width: 100%;
+    }
+    .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 0 18px rgba(255, 74, 141, 0.7); }
+    .btn-secondary {
+      background: var(--bg-panel);
+      color: var(--text-main);
+      font-size: 12px;
+      letter-spacing: 0.96px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 8px 12px;
+      text-transform: uppercase;
+    }
+    .btn-secondary:hover { background: #2a2929; }
+    .btn-small { font-size: 12px; padding: 8px 12px; font-family: var(--font-mono); letter-spacing: 0.96px; }
+
+    .submit-row { display: flex; flex-direction: column; gap: 8px; }
+    .status {
+      min-height: 0;
+      padding: 0;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      line-height: 1.5;
+    }
+    .status:not(:empty) { padding: 10px 12px; }
+    .status.loading { background: var(--bg-deep); color: var(--cyan); border-left: 3px solid var(--cyan); }
+    .status.success { background: var(--bg-deep); color: var(--success); border-left: 3px solid var(--success); }
+    .status.error { background: var(--bg-deep); color: var(--error); border-left: 3px solid var(--error); }
+    .status-note { color: var(--text-muted); font-size: 10px; letter-spacing: 0.5px; text-align: center; }
+
+    /* Payment panel */
+    .payment-panel .price-card {
+      background: var(--bg-panel);
+      padding: 16px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      position: relative;
+    }
+    .label-xs { color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .price {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--amber);
+      letter-spacing: -1.4px;
+    }
+    .price-sub { color: var(--text-main); font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 4px; }
+    .currency { text-align: right; }
+    .currency .value { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: var(--cyan); letter-spacing: 0.96px; text-transform: uppercase; }
+    .pill-dot {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--accent-soft); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;
+    }
+    .pill-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-soft); }
+
+    .qr-section { background: var(--bg-deep); padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+    .qr-top { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .badge {
+      background: var(--accent); color: var(--accent-dark);
+      padding: 2px 4px; font-weight: 700; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .qr-box {
+      background: #fff;
+      padding: 12px;
+      width: 100%;
+      max-width: 332px;
+      box-shadow: 0 0 12.5px rgba(255, 74, 141, 0.35);
+    }
+    .qr-placeholder {
+      width: 192px; height: 192px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background:
+        repeating-linear-gradient(45deg, #e6e6e6 0 8px, #fff 8px 16px);
+      color: #111;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 12px;
+      text-transform: uppercase;
+    }
+    .qr-placeholder span { background: #fff; padding: 6px; }
+    .qr-image { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; }
+    .pay-heading {
+      margin: 0;
+      font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--accent); text-align: center;
+    }
+    .pay-text, .pay-instruction {
+      margin: 0; color: var(--text-muted); font-size: 12px; line-height: 1.6; text-align: center; max-width: 360px;
+    }
+    .pay-instruction { color: var(--amber); }
+    .btn-wide { width: 100%; font-family: var(--font-display); font-size: 18px; letter-spacing: 1.2px; }
+    [hidden] { display: none !important; }
+    .qr-caption { color: var(--text-main); font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; text-align: center; }
+    .qr-meta {
+      background: var(--bg-panel);
+      width: 100%;
+      padding: 6px 8px;
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      font-size: 12px; letter-spacing: 0.96px; font-weight: 700;
+      flex-wrap: wrap;
+    }
+    .qr-meta .val { color: var(--cyan); word-break: break-all; }
+
+    .payment-cta { display: flex; flex-direction: column; gap: 8px; }
+    .payment-supporting { color: var(--text-muted); font-size: 12px; text-align: center; letter-spacing: 0.3px; }
+    .payment-verify {
+      background: var(--bg-deep); padding: 10px 12px; font-size: 11px; color: var(--text-muted);
+      border-left: 3px solid var(--amber); letter-spacing: 0.3px; line-height: 1.6;
+    }
+    .payment-verify strong { color: var(--amber); letter-spacing: 1px; text-transform: uppercase; font-size: 10px; display: block; margin-bottom: 4px; }
+
+    /* Rules & notices */
+    .rules-section { padding: 0 0 24px; scroll-margin-top: 80px; }
+    .notice {
+      background: var(--bg-deep);
+      padding: 16px 16px;
+      display: flex; gap: 12px; align-items: flex-start;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+    .notice-icon { color: var(--amber); font-weight: 700; flex-shrink: 0; }
+    .notice-title { color: var(--amber); font-weight: 700; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+    .notice p { margin: 0; color: var(--text-muted); font-size: 11px; letter-spacing: 0.5px; line-height: 1.7; }
+    .rules-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+    .rule-card { background: var(--bg-card); padding: 16px; }
+    .rule-card h3 {
+      margin: 0 0 8px;
+      font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-main);
+    }
+    .rule-card p { margin: 0; color: var(--text-muted); font-size: 12px; line-height: 1.7; }
+    .integrity-row {
+      background: var(--bg-deep);
+      padding: 16px;
+      margin-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .integrity-row .tags { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .tag { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .tag::before { content: ''; width: 8px; height: 8px; }
+    .tag.red::before { background: var(--accent-soft); }
+    .tag.cyan::before { background: var(--cyan); }
+    .tag.amber::before { background: var(--amber); }
+
+    /* Footer */
+    .site-footer { background: var(--bg-deep); padding: 24px 0; }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+      padding: 0 32px; max-width: 1280px; margin: 0 auto;
+    }
+    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: 1.2px; text-transform: uppercase; }
+    .footer-sub { color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-stats { display: flex; gap: 24px; flex-wrap: wrap; color: var(--text-muted); font-size: 12px; letter-spacing: 0.96px; font-weight: 700; text-transform: uppercase; }
+    .footer-stats span.hi { color: var(--cyan); }
+    .footer-stats span.pink { color: var(--accent-soft); }
+    .copyright { color: var(--text-muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; text-align: right; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .reg-grid { grid-template-columns: 1fr; }
+      .rules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav { display: none; }
+      .nav.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--bg-deep); padding: 8px 16px 16px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+      }
+      .menu-toggle { display: inline-block; }
+      .slots-chip { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .container, .header-inner, .hero-inner, .footer-inner { padding-left: 16px; padding-right: 16px; }
+      .brand-tag { display: none; }
+      .brand-title { font-size: 17px; }
+      .hero-inner { flex-direction: column; align-items: flex-start; padding-top: 28px; }
+      .portal-status { white-space: normal; }
+      .mode-tab { padding: 8px 16px; flex: 1 1 30%; }
+      .mode-tab .name { font-size: 20px; }
+      .mode-label { width: 100%; }
+      .form-grid { grid-template-columns: 1fr; }
+      .rules-grid { grid-template-columns: 1fr; }
+      .payment-panel .price-card { flex-direction: column; align-items: flex-start; }
+      .currency { text-align: left; }
+      .copyright { text-align: left; }
+      .price { font-size: 48px; }
+      .btn { font-size: 20px; }
+      .scanner-frame { height: 180px; }
+    }
+
+    @media (max-width: 420px) {
+      .mode-tab { flex: 1 1 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-bar" aria-hidden="true"></span>
+        <div class="brand-title">Free Fire Battlegrounds<br />Tournament</div>
+        <span class="brand-tag">CyberStrike // OPS_NET</span>
+      </div>
+
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="#top">Tournament Hub</a>
+        <a href="#register" class="active">Squad Registration</a>
+        <a href="#brackets">Live Brackets</a>
+        <a href="#rules">Protocol Rules</a>
+      </nav>
+
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="slots-chip">Slots<strong>42/48 Locked</strong></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#590028" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="op-id">[OP_ID: FF-BR-PROTOCOL-2025]</div>
+          <h1>Free Fire Battle Royale Tournament &mdash; Registration &amp; Entry</h1>
+        </div>
+        <div class="portal-status">
+          <svg width="12" height="15" viewBox="0 0 12 15" fill="none" stroke="#ffb1c4" stroke-width="1.5" aria-hidden="true"><path d="M6 1l5 2v4.5c0 3.2-2.2 5.6-5 6.5C3.2 13.1 1 10.7 1 7.5V3l5-2z"/></svg>
+          <div>
+            <span class="label-xs" style="font-size:10px;">Portal Status</span>
+            <strong>Live Encrypted Gateway</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODE SWITCHER ============ -->
+    <section class="mode-section">
+      <div class="container">
+        <div class="mode-bar" role="group" aria-label="Entry mode">
+          <div class="mode-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5bcc5" stroke-width="2" aria-hidden="true"><path d="M6 9V4h12v5M6 18H4v-6h16v6h-2M6 14v4h12v-4"/></svg>
+            Deployment Protocol:
+          </div>
+          <div class="mode-tabs">
+            <button class="mode-tab" type="button" aria-pressed="false" tabindex="-1">
+              <span class="code">[OP_01]</span>
+              <span class="name">Solo</span>
+              <span class="desc">1 Combatant</span>
+            </button>
+            <button class="mode-tab" type="button" aria-pressed="false" tabindex="-1">
+              <span class="code">[OP_02]</span>
+              <span class="name">Duo</span>
+              <span class="desc">2 Combatants</span>
+            </button>
+            <button class="mode-tab active" type="button" aria-pressed="true" tabindex="-1">
+              <span class="code">[SYS_ACTIVE]</span>
+              <span class="name">Squad</span>
+              <span class="desc">4 Main + 1 Reserve</span>
+            </button>
+          </div>
+          <div class="region">Server Region: <strong>IND // High Priority</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REGISTRATION + PAYMENT ============ -->
+    <section class="register" id="register">
+      <div class="container">
+        <div class="reg-grid">
+
+          <!-- Left: registration form -->
+          <div>
+            <form class="panel" id="registrationForm" novalidate>
+              <div class="panel-header">
+                <div class="title">Entry Registration // Participant Details</div>
+                <div class="meta">Mandatory</div>
+              </div>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Full Name</label>
+                  <input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Arjun Mehta" maxlength="80" required aria-describedby="nameError" />
+                  <div class="field-error" id="nameError" role="alert"></div>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="combatant@example.com" maxlength="120" required aria-describedby="emailError" />
+                  <div class="field-error" id="emailError" role="alert"></div>
+                </div>
+
+                <div class="field full">
+                  <label for="phone">Phone (WhatsApp / Mobile)</label>
+                  <div class="phone-wrap">
+                    <span class="phone-prefix" aria-hidden="true">+91</span>
+                    <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9876543210" maxlength="16" required aria-describedby="phoneError" />
+                  </div>
+                  <div class="field-error" id="phoneError" role="alert"></div>
+                </div>
+              </div>
+
+              <div class="submit-row">
+                <button class="btn btn-primary" type="submit" id="submitBtn">Submit Registration</button>
+                <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+                <div class="status-note">Your details are sent to the tournament organisers. Pay the fee on the right to secure your slot.</div>
+              </div>
+            </form>
+
+            <!-- Optical scanner (display only) -->
+            <div class="panel" style="margin-top:24px;">
+              <div class="panel-header">
+                <div class="title">Optical Scanner // Fast Check-in &amp; Proof Verifier</div>
+                <div class="meta cyan">Optical HUD: Ready</div>
+              </div>
+              <div class="scanner">
+                <div class="scanner-frame">
+                  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+                  <span class="scan-line"></span>
+                  <span class="scanner-caption">Camera stream: Standby</span>
+                  <span class="scanner-hint">Align entry QR within frame</span>
+                </div>
+                <p class="scanner-note">Scanning is used by tournament referees for check-in. Camera access is requested only when you press the button below.</p>
+                <button class="btn btn-secondary" type="button" id="cameraBtn" disabled>Test camera check-in (coming soon)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: payment -->
+          <aside class="panel payment-panel" aria-labelledby="paymentHeading">
+            <div class="panel-header">
+              <div class="title" id="paymentHeading">Payment Authorization Node</div>
+              <div class="meta">UPI Direct Gate</div>
+            </div>
+
+            <div class="price-card">
+              <div>
+                <div class="label-xs">Required Registration Fee</div>
+                <div class="price">&#8377;150</div>
+                <div class="price-sub">Squad tier (full roster verification)</div>
+              </div>
+              <div class="currency">
+                <div class="label-xs">Currency</div>
+                <div class="value">INR (UPI)</div>
+                <div class="pill-dot">Pay after registering</div>
+              </div>
+            </div>
+
+            <div class="qr-section">
+              <h3 class="pay-heading">PAY TO ENTER THE BATTLE</h3>
+              <p class="pay-text">Scan the QR code below using your UPI app to pay the tournament registration fee.</p>
+
+              <div class="qr-box">
+                <img
+                  class="qr-image"
+                  src="assets/payment-qr.jpeg"
+                  alt="Official tournament payment QR code. Scan with any UPI app to pay the registration fee."
+                  width="1152"
+                  height="1600"
+                />
+                <div class="qr-placeholder" role="img" aria-label="Payment QR code unavailable" hidden>
+                  <span>Payment QR unavailable<br />Place the image at assets/payment-qr.jpeg</span>
+                </div>
+              </div>
+
+              <p class="pay-instruction">After completing your payment, keep your transaction confirmation for verification.</p>
+
+              <button class="btn btn-secondary btn-wide" type="button" id="paidBtn">I HAVE COMPLETED PAYMENT</button>
+              <div class="status" id="paymentStatus" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="payment-verify">
+              <strong>Payment verification</strong>
+              Opening the payment page does not confirm your payment. Slots are confirmed only after the organisers verify your payment manually.
+            </div>
+
+            <div class="notice" role="note">
+              <div class="notice-icon" aria-hidden="true">!</div>
+              <div>
+                <div class="notice-title">Critical Advisory // 15-Minute Lock</div>
+                <p>Slots are reserved for 15 minutes after submission. Free Fire UID validation and payment records will be cross-checked manually by tournament referees. Fake IDs result in a permanent ban.</p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RULES ============ -->
+    <section class="rules-section" id="rules">
+      <div class="container">
+        <div class="panel" style="background: transparent; padding: 0; box-shadow: none;">
+          <div class="panel-header" style="background: var(--bg-card);">
+            <div class="title">Protocol Rules &amp; Tournament Information</div>
+            <div class="meta">Read before entering</div>
+          </div>
+        </div>
+
+        <div class="rules-grid">
+          <article class="rule-card">
+            <h3>Fair play mandate</h3>
+            <p>Emulators are strictly prohibited. Only mobile-only touch control devices are allowed. Screen recorders are permitted for your own review.</p>
+          </article>
+          <article class="rule-card">
+            <h3>Roster policy</h3>
+            <p>Squads field 4 main players and 1 reserve. Teaming with other squads is not allowed. Each player must hold a Level 40+ Free Fire account.</p>
+          </article>
+          <article class="rule-card">
+            <h3>Check-in &amp; results</h3>
+            <p>Check-in is handled by referees using the scanner. Brackets and results will be published on the Live Brackets page once they are confirmed.</p>
+          </article>
+        </div>
+
+        <div class="integrity-row">
+          <div class="tags">
+            <span class="tag red">No teaming</span>
+            <span class="tag cyan">Screen recorder ready</span>
+            <span class="tag amber">Level 40+ FF account</span>
+          </div>
+          <div class="tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5bcc5" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
+            Garina anti-cheat &amp; protocol compliant
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">CyberStrike FF Protocol</div>
+        <div class="footer-sub">Authorized esports operations &middot; High-voltage net</div>
+      </div>
+      <div class="footer-stats">
+        <span>Latency: <span class="hi">12ms</span></span>
+        <span>Security: <span class="pink">Encrypted</span></span>
+      </div>
+      <div class="copyright">&copy; 2025 Free Fire Battlegrounds Tournament Platform. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===================================================
+       CONFIGURATION
+       =================================================== */
+
+    // Deployed Google Apps Script Web App URL (ends with /exec).
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylaQ81MmCY6HqOLf-fl1cL9_IUsmq6389ze1-pC6v9x4nwHVtOfzprUfkGlnKGAiyLXA/exec";
+
+    /* ===================================================
+       ELEMENTS
+       =================================================== */
+    const form = document.getElementById("registrationForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusEl = document.getElementById("formStatus");
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    /* ===================================================
+       VALIDATION
+       =================================================== */
+    const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    // Accepts a 10-digit Indian mobile number starting with 6-9, optionally with +91, 91 or 0.
+    function normalizePhone(value) {
+      let digits = value.replace(/[\s\-()]/g, "");
+      if (digits.startsWith("+91")) digits = digits.slice(3);
+      else if (digits.startsWith("91") && digits.length === 12) digits = digits.slice(2);
+      else if (digits.startsWith("0") && digits.length === 11) digits = digits.slice(1);
+      return /^[6-9]\d{9}$/.test(digits) ? digits : "";
+    }
+
+    function setFieldError(input, errorEl, message) {
+      errorEl.textContent = message;
+      input.setAttribute("aria-invalid", message ? "true" : "false");
+    }
+
+    function validateAll() {
+      const name = nameInput.value.trim().replace(/\s+/g, " ");
+      const email = emailInput.value.trim().toLowerCase();
+      const phone = normalizePhone(phoneInput.value.trim());
+
+      let valid = true;
+
+      if (!name) {
+        setFieldError(nameInput, nameError, "Name is required.");
+        valid = false;
+      } else if (name.length < 2 || !/\p{L}/u.test(name)) {
+        setFieldError(nameInput, nameError, "Enter a valid name (at least 2 letters).");
+        valid = false;
+      } else {
+        setFieldError(nameInput, nameError, "");
+      }
+
+      if (!email) {
+        setFieldError(emailInput, emailError, "Email is required.");
+        valid = false;
+      } else if (!EMAIL_RE.test(email)) {
+        setFieldError(emailInput, emailError, "Enter a valid email address.");
+        valid = false;
+      } else {
+        setFieldError(emailInput, emailError, "");
+      }
+
+      if (!phoneInput.value.trim()) {
+        setFieldError(phoneInput, phoneError, "Phone number is required.");
+        valid = false;
+      } else if (!phone) {
+        setFieldError(phoneInput, phoneError, "Enter a valid 10-digit Indian mobile number.");
+        valid = false;
+      } else {
+        setFieldError(phoneInput, phoneError, "");
+      }
+
+      return valid ? { name, email, phone } : null;
+    }
+
+    // Clear an error as soon as the player edits the field.
+    [nameInput, emailInput, phoneInput].forEach(function (input) {
+      input.addEventListener("input", function () {
+        input.removeAttribute("aria-invalid");
+        if (input === nameInput) nameError.textContent = "";
+        if (input === emailInput) emailError.textContent = "";
+        if (input === phoneInput) phoneError.textContent = "";
+      });
+    });
+
+    /* ===================================================
+       STATUS MESSAGES
+       =================================================== */
+    function showStatus(type, message) {
+      statusEl.className = "status " + type;
+      statusEl.textContent = message;
+    }
+
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      submitBtn.textContent = isLoading ? "Sending..." : "Submit Registration";
+    }
+
+    /* ===================================================
+       SUBMISSION (Google Apps Script, GET + no-cors)
+       ---------------------------------------------------
+       With mode "no-cors", the response is opaque. A resolved
+       request only means the request was sent. It does NOT prove
+       the row was saved in Google Sheets, so the success message
+       below says that and does not claim verified storage.
+       =================================================== */
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const data = validateAll();
+      if (!data) {
+        showStatus("error", "Please fix the highlighted fields and try again.");
+        return;
+      }
+
+      setLoading(true);
+      showStatus("loading", "Sending your registration...");
+
+      const url = SCRIPT_URL + "?" + new URLSearchParams({
+        name: data.name,
+        email: data.email,
+        phone: data.phone
+      });
+
+      fetch(url, {
+        method: "GET",
+        mode: "no-cors"
+      })
+        .then(function () {
+          form.reset();
+          showStatus(
+            "success",
+            "Registration sent. Next, pay the registration fee to secure your place. " +
+            "We could not confirm the sheet save from this page, so keep your details. " +
+            "The organisers will verify your registration."
+          );
+        })
+        .catch(function () {
+          showStatus(
+            "error",
+            "We could not send your registration. Check your internet connection and try again."
+          );
+        })
+        .finally(function () {
+          setLoading(false);
+        });
+    });
+
+    /* ===================================================
+       PAYMENT BUTTON
+       =================================================== */
+    /* Payment confirmation. This does NOT verify payment. Status stays PENDING
+       until the organisers check the transaction manually. */
+    const paidBtn = document.getElementById("paidBtn");
+    const paymentStatusEl = document.getElementById("paymentStatus");
+    paidBtn.addEventListener("click", function () {
+      paymentStatusEl.className = "status loading";
+      paymentStatusEl.textContent =
+        "Thanks. Your payment status is PENDING. Keep your transaction ID and screenshot ready. " +
+        "Your slot is confirmed only after the organisers verify your payment.";
+    });
+
+    /* If the QR image fails to load, show the fallback message */
+    const qrImage = document.querySelector(".qr-image");
+    const qrFallback = document.querySelector(".qr-placeholder");
+    if (qrImage) {
+      qrImage.addEventListener("error", function () {
+        qrImage.hidden = true;
+        qrFallback.hidden = false;
+      });
+    }
+
+    /* ===================================================
+       MOBILE NAVIGATION
+       =================================================== */
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* Highlight the nav link for the section in view */
+    const navLinks = Array.from(mainNav.querySelectorAll("a"));
+    const sections = navLinks
+      .map(function (link) { return document.querySelector(link.getAttribute("href")); })
+      .filter(Boolean);
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function (link) {
+              link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+
+      sections.forEach(function (section) { observer.observe(section); });
+    }
+  </script>
+</body>
+</html>
